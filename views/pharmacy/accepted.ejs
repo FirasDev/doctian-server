@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- blog-details23:51-->
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+	<link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico">
+	<title>Preclinic - Medical & Hospital - Bootstrap 4 Admin Template</title>
+	<link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/assets/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+	<!--[if lt IE 9]>
+		<script src="/assets/js/html5shiv.min.js"></script>
+		<script src="/assets/js/respond.min.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+	<div class="main-wrapper">
+		<%- include('partials/header') %>
+		<%- include('partials/sidemenu') %>
+
+
+
+
+
+
+
+		<div class="page-wrapper">
+			<div class="content">
+				<div class="row">
+					<div class="col-sm-4 col-3">
+						<h4 class="page-title">Drug Requests</h4>
+					</div>
+
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="table-responsive">
+							<table class="table table-striped custom-table">
+								<thead>
+									<tr>
+										<th>Date</th>
+										<th>Drug</th>
+										<th>Quantity</th>
+										<th>Patient</th>
+
+										<th>Status</th>
+
+									</tr>
+								</thead>
+								<tbody>
+									<% for (var request of medicamentResponces) { %>
+										<% if( request.medicamentRequest.image == 'pill-png-2') { %>
+										<tr>
+											<td><%= moment(request.createDate).format('MMMM DD, YYYY'); %></td>
+											<td><%= request.medicamentRequest.medicament %></td>
+											<td><%= request.medicamentRequest.quantity %></td>
+											<td><%= request.medicamentRequest.patient.name %>
+												<%= request.medicamentRequest.patient.lastName %></td>
+											<% if( request.medicamentRequest.state == 'Closed') { %>
+											<td><span class="custom-badge status-red">Closed</span></td>
+											<% } else { %>
+											<td><span class="custom-badge status-green">Pending</span></td>
+											<% } %>
+										</tr>
+										<% } %>
+									<% } %>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+
+				</div>
+				<br>
+				<br>
+				<div class="row">
+					<div class="col-sm-4 col-3">
+						<h4 class="page-title">Prescription Requests</h4>
+					</div>
+
+				</div>
+
+				<div class="row">
+					<div class="col-md-12">
+						<div class="table-responsive">
+							<table class="table table-striped custom-table">
+								<thead>
+									<tr>
+										<th>Date</th>
+										<th>Prescription</th>
+										<th>Patient</th>
+										
+										<th>Doctor</th>
+										
+										<th>Status</th>
+										
+									</tr>
+								</thead>
+								<tbody>
+									<% for (var request of medicamentResponces) { %>
+										<% if( request.medicamentRequest.image != 'pill-png-2') { %>
+										<tr>
+											<td><%= moment(request.createDate).format('MMMM DD, YYYY'); %></td>
+											<td><%= request.medicamentRequest.perscription.perscriptionDescription %></td>
+											<td><%= request.medicamentRequest.patient.name %>
+												<%= request.medicamentRequest.patient.lastName %></td>
+											<td><%= request.medicamentRequest.perscription.doctor.name %> <%= request.medicamentRequest.perscription.doctor.lastName %></td>
+											
+											<% if( request.medicamentRequest.state == 'Closed') { %>
+											<td><span class="custom-badge status-red">Closed</span></td>
+											<% } else { %>
+											<td><span class="custom-badge status-green">Pending</span></td>
+											<% } %>
+										</tr>
+										<% } %>
+									<% } %>
+									
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+			<script src="/assets/js/jquery-3.2.1.min.js"></script>
+			<script src="/assets/js/popper.min.js"></script>
+			<script src="/assets/js/bootstrap.min.js"></script>
+			<script src="/assets/js/jquery.slimscroll.js"></script>
+			<script src="/assets/js/app.js"></script>
+</body>
+
+
+<!-- blog-details23:56-->
+
+</html>

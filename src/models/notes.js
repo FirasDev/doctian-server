@@ -2,27 +2,27 @@ const mongoose = require('mongoose')
 const validator = require('validator')
 
 const notesSchema = new mongoose.Schema({
-    notesDetails:{
-        type : String,
-        trim:true,
-        required :true
+    notesDetails: {
+        type: String,
+        trim: true,
+        required: true
     },
-    ipfsUrl:{
-        type : String,
-        trim:true
+    ipfsUrl: {
+        type: String,
+        trim: true
     },
-    patient:{
+    patient: {
         type: mongoose.Schema.Types.ObjectId,
-        required :true,
+        required: true,
         ref: 'Patient'
     },
-    doctor:{
+    doctor: {
         type: mongoose.Schema.Types.ObjectId,
-        required :true,
+        required: true,
         ref: 'Doctor'
     }
-})
+},{ strict: true })
 
-const Notes = mongoose.model('Notes',notesSchema)
+const Notes = mongoose.model('Notes', notesSchema)
 
 module.exports = Notes

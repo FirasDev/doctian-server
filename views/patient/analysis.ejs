@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- blog-details23:51-->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico">
+    <title>Preclinic - Medical & Hospital - Bootstrap 4 Admin Template</title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <!--[if lt IE 9]>
+		<script src="/assets/js/html5shiv.min.js"></script>
+		<script src="/assets/js/respond.min.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+    <style>
+        .about-author-img-analyse {
+            background-color: #fff;
+            height: 180px;
+            border-radius: 50%;
+            border: 5px solid white;
+            overflow: hidden;
+            position: absolute;
+            margin-left: auto;
+            margin-right: auto;
+            left: 0;
+            right: 0;
+            text-align: center;
+            margin-top: -230px;
+            width: 180px;
+        }
+
+        .blog-image-analyse {
+            overflow: hidden;
+        }
+
+        .blog-image-analyse img {
+            display: block;
+            position: relative;
+            width: 100%;
+            min-height: 300px;
+            max-height: 500px;
+            height: auto;
+        }
+
+        .blog-image-analyse img {
+            -moz-transform: scaleY(1);
+            -webkit-transform: scaleY(1);
+            -o-transform: scaleY(1);
+            -ms-transform: scaleY(1);
+            transform: scaleY(1);
+            -moz-transition: all 0.5s ease-in-out 0s;
+            -ms-transition: all 0.5s ease-in-out 0s;
+            -o-transition: all 0.5s ease-in-out 0s;
+            -webkit-transition: all 0.5s ease-in-out 0s;
+            transition: all 0.5s ease-in-out 0s;
+        }
+
+        .blog-image-analyse a:hover img {
+            -moz-transform: scale(1.1);
+            -webkit-transform: scale(1.1);
+            -o-transform: scale(1.1);
+            -ms-transform: scale(1.1);
+            transform: scale(1.1);
+        }
+
+        /* .blog-image-analyse {
+            margin-bottom: 30px;
+        } */
+
+        .blog-analyse {
+            position: relative;
+            margin: 0 0 50px;
+            background-color: #fff;
+            border: 1px solid #e7e7e7;
+            border-radius: 4px;
+        }
+
+        .blog-padding {
+
+            padding: 20px;
+        }
+
+        .comment-submit .btn-analyse {
+            background-color: #009efb;
+            border-color: #009efb;
+            border-radius: 0;
+            font-size: 16px;
+            padding: 8px 26px;
+            width: 100%;
+            color: #fff;
+        }
+
+        .comment-submit a {
+            background-color: red;
+            color: #fff;
+        }
+    </style>
+    <div class="main-wrapper">
+        <%- include('partials/header') %>
+        <%- include('partials/sidemenu') %>
+        <div class="page-wrapper">
+            <div class="content">
+                <div class="row">
+                    <div class="col-lg-8 offset-lg-2">
+                        <h4 class="page-title">Analyses</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8 offset-lg-2">
+                        <div class="blog-view">
+                            <% for (var analyse of analyses) { %>
+                            <article class="blog-analyse blog-single-post">
+                                <div class="blog-image-analyse">
+                                    <a href="#."><img alt="" src="/users/img/<%= analyse.laboratory.coverPicture %>"
+                                            class="img-fluid"></a>
+                                </div>
+                                <div class="about-author-img-analyse">
+                                    <div class="author-img-wrap">
+                                        <img class="img-fluid rounded-circle" alt=""
+                                            src="/users/img/<%= analyse.laboratory.owner.avatar %>">
+                                    </div>
+                                </div>
+
+                                <div class="blog-padding">
+
+                                    <h3 class="blog-title"><%= analyse.category %></h3>
+                                    <div class="blog-info clearfix">
+                                        <div class="post-left">
+                                            <ul>
+                                                <% if(analyse.status == 'Ended'){ %>
+                                                <li><a href="#."><i class="fa fa-check-circle"></i>
+                                                        <span><%= analyse.status %></span></a>
+                                                    <% } %>
+                                                    <% if(analyse.status == 'Started'){ %>
+                                                <li><a href="#."><i class="fa fa-info-circle"></i>
+                                                        <span><%= analyse.status %></span></a>
+                                                    <% } %>
+                                                    <% if(analyse.status == 'Waiting'){ %>
+                                                <li><a href="#."><i class="fa fa-times-circle"></i>
+                                                        <span><%= analyse.status %></span></a>
+                                                    <% } %>
+                                                <li><a href="#."><i
+                                                            class="fa fa-calendar"></i><span><%= moment(analyse.createDate).format('MMMM DD, YYYY'); %></span></a>
+                                                </li>
+                                                <li><a href="#." class="capitalize"><i class="fa Example of hospital-o fa-hospital-o "></i>
+                                                        <span><%= analyse.laboratory.name %></span></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="post-right capitalize"><a href="/web/patient/doctor/<%= analyse.doctor._id %>"><i
+                                                    class="fa fa-user-md " ></i><%= analyse.doctor.name %>
+                                                <%= analyse.doctor.lastName %></a></div>
+
+                                    </div>
+                                    <div class="blog-content">
+                                        <p><%= analyse.description %>.</p>
+                                    </div>
+                                </div>
+                                <% if(analyse.status == 'Ended'){ %>
+                                    <div class="comment-submit">
+                                        <a href="#." class="btn-analyse" style=" color: #fff ; text-align: center;">See Results</a>
+                                    </div>
+                                <% } %>
+                               
+                            </article>
+                            <% } %>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/assets/js/jquery-3.2.1.min.js"></script>
+    <script src="/assets/js/popper.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/jquery.slimscroll.js"></script>
+    <script src="/assets/js/app.js"></script>
+</body>
+
+
+<!-- blog-details23:56-->
+
+</html>

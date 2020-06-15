@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- blog-details23:51-->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico">
+    <title>Preclinic - Medical & Hospital - Bootstrap 4 Admin Template</title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <!--[if lt IE 9]>
+		<script src="/assets/js/html5shiv.min.js"></script>
+		<script src="/assets/js/respond.min.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+    <style>
+        .about-author-img-note {
+            background-color: #fff;
+            height: 70px;
+            overflow: hidden;
+            position: absolute;
+            width: 70px;
+        }
+
+        .doc-distance {
+            color: #777;
+            font-size: 12px;
+            margin-top: 2px;
+        }
+
+
+
+        .delete-modal .modal-body .btn.btn-success {
+            color: #fff;
+        }
+    </style>
+    <div class="main-wrapper">
+        <%- include('partials/header') %>
+        <%- include('partials/sidemenu') %>
+
+
+        <div class="page-wrapper">
+            <div class="content">
+                <div class="row">
+                    <div class="col-sm-4 col-3">
+                        <h4 class="page-title">Doctors</h4>
+                    </div>
+                </div>
+                <div class="row doctor-grid">
+
+                    <% for (var doctor of doctors ) { %>
+
+                    <div class="col-md-4 col-sm-4  col-lg-3">
+                        <div class="profile-widget">
+                            <div class="doctor-img">
+                                <a class="avatar" href="/web/patient/doctor/<%= doctor.doctor._id %>"><img alt=""
+                                        src="/users/img/<%= doctor.doctor.owner.avatar %>"></a>
+                            </div>
+                            <div class="dropdown profile-action">
+                                <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown"
+                                    aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                                <div class="dropdown-menu dropdown-menu-right">
+
+                                    <a class="dropdown-item" href="#" data-toggle="modal"
+                                        data-target="#delete_doctor"><i class="fa  fa-calendar-plus-o
+                                        m-r-5"></i> AI
+                                        Auto-Appointment</a>
+                                </div>
+                            </div>
+                            <h4 class="doctor-name text-ellipsis capitalize"><a
+                                href="/web/patient/doctor/<%= doctor.doctor._id %>"><%= doctor.doctor.name %> <%= doctor.doctor.lastName %></a></h4>
+                            <div class="doc-prof capitalize"><%= doctor.doctor.specialty %></div>
+                            <div class="user-country">
+                                <i class="fa fa-map-marker"></i> <%= doctor.doctor.owner.country %>,
+                                <%= doctor.doctor.owner.city %>
+                            </div>
+                            <div class="doc-distance capitalize">(<%= doctor.distance %> Km)</div>
+                        </div>
+                    </div>
+
+                    <div id="delete_doctor" class="modal fade delete-modal" role="dialog">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <form method="GET" action="/web/patient/doctors/appointment/<%= doctor.doctor._id %>">
+                                    <div class="modal-body text-center">
+                                        <img src="/assets/img/sent.png" alt="" width="50" height="46">
+                                        <h3>Are you sure want to Create Appointement with this Doctor?</h3>
+                                        <div class="m-t-20"> <a href="#" class="btn btn-white"
+                                                data-dismiss="modal">Close</a>
+                                            <button type="submit" class="btn btn-success">Delete</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <% } %>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    <script src="/assets/js/jquery-3.2.1.min.js"></script>
+    <script src="/assets/js/popper.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/jquery.slimscroll.js"></script>
+    <script src="/assets/js/app.js"></script>
+</body>
+
+
+<!-- blog-details23:56-->
+
+</html>

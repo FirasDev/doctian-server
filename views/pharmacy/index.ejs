@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- blog-details23:51-->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico">
+    <title>Preclinic - Medical & Hospital - Bootstrap 4 Admin Template</title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <!--[if lt IE 9]>
+		<script src="/assets/js/html5shiv.min.js"></script>
+		<script src="/assets/js/respond.min.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+    <div class="main-wrapper">
+        <%- include('partials/header') %>
+        <%- include('partials/sidemenu') %>
+
+
+
+
+
+
+
+        <div class="page-wrapper">
+            <div class="content">
+                <div class="row">
+                    <div class="col-sm-4 col-3">
+                        <h4 class="page-title">Drug Requests</h4>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="table-responsive">
+                            <table class="table table-border table-striped custom-table datatable mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Drug</th>
+                                        <th>Quantity</th>
+                                        <th>Patient</th>
+                                        <th>Phone</th>
+
+                                        <th class="text-right">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% for (var request of medicamentRequest) { %>
+                                    <% if(request.action) { %>
+
+                                    <tr>
+                                        <td><%= moment(request.createDate).format('MMMM DD, YYYY'); %></td>
+                                        <td> <%= request.medicament %></td>
+                                        <td><%= request.quantity %></td>
+                                        <td><img width="28" height="28"
+                                                src="/users/img/<%= request.patient.owner.avatar %>"
+                                                class="rounded-circle m-r-5" alt=""><%= request.patient.name %>
+                                            <%= request.patient.lastName %></td>
+                                        <td><%= request.patient.owner.phoneNumber %></td>
+
+                                        <td class="text-right">
+                                            <div class="dropdown dropdown-action">
+                                                <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown"
+                                                    aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                                                <div class="dropdown-menu dropdown-menu-right">
+                                                    <a class="dropdown-item"
+                                                        href="/web/pharmacy/medicaments/request/<%= request._id %>"><i
+                                                            class="fa fa-pencil m-r-5"></i>Accept</a>
+
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <% } %>
+                                    <% } %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div class="row">
+                    <div class="col-sm-4 col-3">
+                        <h4 class="page-title">Prescription Requests</h4>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="table-responsive">
+                            <table class="table table-border table-striped custom-table datatable mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Prescription</th>
+                                        <th>Patient</th>
+                                        <th>Age</th>
+                                        <th>Phone</th>
+                                        <th>Doctor</th>
+
+                                        <th class="text-right">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% for (var request of prescriptionRequest) { %>
+                                        <% if(request.action) { %>
+
+                                    <tr>
+                                        <td><%= moment(request.createDate).format('MMMM DD, YYYY'); %></td>
+                                        <td> <%= request.perscription.perscriptionDescription %></td>
+                                        <td><img width="28" height="28"
+                                                src="/users/img/<%= request.patient.owner.avatar %>"
+                                                class="rounded-circle m-r-5" alt=""><%= request.patient.name %>
+                                            <%= request.patient.lastName %></td>
+                                        <td><%= moment().diff(moment(request.patient.dateOfBirth), 'years') %></td>
+                                        <td><%= request.patient.owner.phoneNumber %></td>
+                                        <td><img width="28" height="28"
+                                                src="/users/img/<%= request.perscription.doctor.owner.avatar %>"
+                                                class="rounded-circle m-r-5"
+                                                alt=""><%= request.perscription.doctor.name %>
+                                            <%= request.perscription.doctor.lastName %></td>
+
+                                        <td class="text-right">
+                                            <div class="dropdown dropdown-action">
+                                                <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown"
+                                                    aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                                                <div class="dropdown-menu dropdown-menu-right">
+                                                    <a class="dropdown-item"
+                                                        href="/web/pharmacy/medicaments/request/<%= request._id %>"><i
+                                                            class="fa fa-pencil m-r-5"></i>Accept</a>
+
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <% } %>
+                                    <% } %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <script src="/assets/js/jquery-3.2.1.min.js"></script>
+        <script src="/assets/js/popper.min.js"></script>
+        <script src="/assets/js/bootstrap.min.js"></script>
+        <script src="/assets/js/jquery.slimscroll.js"></script>
+        <script src="/assets/js/app.js"></script>
+</body>
+
+
+<!-- blog-details23:56-->
+
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- blog-details23:51-->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico">
+    <title>Preclinic - Medical & Hospital - Bootstrap 4 Admin Template</title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <!--[if lt IE 9]>
+		<script src="/assets/js/html5shiv.min.js"></script>
+		<script src="/assets/js/respond.min.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+    <style>
+        .about-author-img-note {
+            background-color: #fff;
+            height: 70px;
+            overflow: hidden;
+            position: absolute;
+            width: 70px;
+        }
+
+        .user-img-speciality {
+            background-color: #ddd;
+            border-radius: 5px;
+        }
+    </style>
+    <div class="main-wrapper">
+        <%- include('partials/header') %>
+        <%- include('partials/sidemenu') %>
+
+
+
+
+
+
+        <div class="page-wrapper">
+            <div class="content">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                        <div class="dash-widget">
+                            <span class="dash-widget-bg1"><i class="fa  fa-file-text" aria-hidden="true"></i></span>
+                            <div class="dash-widget-info text-right">
+                                <h3><%= notesNumber %></h3>
+                                <span class="widget-title1">Notes <i class="fa fa-check" aria-hidden="true"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                        <div class="dash-widget">
+                            <span class="dash-widget-bg2"><i class="fa fa-medkit"></i></span>
+                            <div class="dash-widget-info text-right">
+                                <h3><%= prescriptionsNumber %></h3>
+                                <span class="widget-title2">Prescription <i class="fa fa-check"
+                                        aria-hidden="true"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                        <div class="dash-widget">
+                            <span class="dash-widget-bg3"><i class="fa fa-heartbeat" aria-hidden="true"></i></span>
+                            <div class="dash-widget-info text-right">
+                                <h3><%= analysesNumber %></h3>
+                                <span class="widget-title3">Analysis <i class="fa fa-check"
+                                        aria-hidden="true"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                        <div class="dash-widget">
+                            <span class="dash-widget-bg4"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                            <div class="dash-widget-info text-right">
+                                <h3><%= appointmentsNumber %></h3>
+                                <span class="widget-title4">Appointments<i class="fa fa-check"
+                                        aria-hidden="true"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-6 col-lg-8 col-xl-8">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title d-inline-block">Upcoming Appointments</h4> <a
+                                    href="/web/patient/appointments" class="btn btn-primary float-right">View all</a>
+                            </div>
+                            <div class="card-body p-0">
+                                <div class="table-responsive">
+                                    <table class="table mb-0">
+                                        <thead class="d-none">
+                                            <tr>
+                                                <th>Patient Name</th>
+                                                <th>Doctor Name</th>
+                                                <th>Timing</th>
+                                                <th class="text-right">Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% for (var appointment of appointments) { %>
+                                            <tr>
+                                                <td style="min-width: 200px;">
+                                                    <a class="avatar"
+                                                        href="/web/patient/doctor/<%= appointment.doctor._id %>"><img
+                                                            width="40" height="40"
+                                                            src="/users/img/<%= appointment.doctor.owner.avatar %>"
+                                                            class="rounded-circle m-r-5" alt=""></a>
+                                                    <h2><a href="/web/patient/doctor/<%= appointment.doctor._id %>"
+                                                            class="capitalize">Dr. <%= appointment.doctor.name %>
+                                                            <%= appointment.doctor.lastName %> <span>New York,
+                                                                USA</span></a></h2>
+                                                </td>
+                                                <td>
+                                                    <h5 class="time-title p-0">Appointment With</h5>
+                                                    <p><%= moment(appointment.appointmentDate).format('Do MMMM YYYY'); %>
+                                                    </p>
+                                                </td>
+                                                <td>
+                                                    <h5 class="time-title p-0">Timing</h5>
+                                                    <p><%= moment(appointment.appointmentDate).format('LT'); %></p>
+                                                </td>
+                                                <td class="text-right">
+                                                    <a href="/web/patient/appointments"
+                                                        class="btn btn-outline-primary take-btn">Take up</a>
+                                                </td>
+                                            </tr>
+                                            <% } %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4 col-xl-4">
+                        <div class="card member-panel">
+                            <div class="card-header bg-white">
+                                <h4 class="card-title mb-0">Browse Doctors By Speciality</h4>
+                            </div>
+                            <div class="card-body">
+                                <ul class="contact-list">
+                                    <li>
+                                        <div class="contact-cont">
+                                            <div class="float-left user-img user-img-speciality m-r-10">
+                                                <a href="/web/patient/doctors/Family Medicine" title="John Doe"><img
+                                                        src="/assets/img/family-medicine-100.png" alt=""
+                                                        class="w-40 rounded-circle"></a>
+                                            </div>
+                                            <div class="contact-info">
+                                                <a href="/web/patient/doctors/Family Medicine">
+                                                    <span class="contact-name text-ellipsis">Family Medicine</span>
+                                                </a>
+                                                <span class="contact-date">A primary care specialty</span>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <div class="contact-cont">
+                                            <div class="float-left user-img user-img-speciality m-r-10">
+                                                <a href="/web/patient/doctors/ALLERGY & IMMUNOLOGY" title="John Doe"><img
+                                                        src="/assets/img/allergy-immunology-100.png" alt=""
+                                                        class="w-40 rounded-circle"></a>
+                                            </div>
+                                            <div class="contact-info">
+                                                <a href="/web/patient/doctors/ALLERGY & IMMUNOLOGY">
+                                                    <span class="contact-name text-ellipsis">Allergy / Immunology</span>
+                                                </a>
+                                                <span class="contact-date">For patients suffering from allergic</span>
+                                            </div>
+                                        </div>
+                                    </li>
+
+
+
+                                    <li>
+                                        <div class="contact-cont">
+                                            <div class="float-left user-img user-img-speciality m-r-10">
+                                                <a href="/web/patient/doctors/Psychiatry" title="John Doe"><img
+                                                        src="/assets/img/psychiatry-100.png" alt=""
+                                                        class="w-40 rounded-circle"></a>
+                                            </div>
+                                            <div class="contact-info">
+                                                <a href="/web/patient/doctors/Psychiatry">
+                                                    <span class="contact-name text-ellipsis">Psychiatry</span>
+                                                </a>
+                                                <span class="contact-date">Provides care for the mental health</span>
+                                            </div>
+                                        </div>
+                                    </li>
+
+
+
+
+                                    <li>
+                                        <div class="contact-cont">
+                                            <div class="float-left user-img user-img-speciality m-r-10">
+                                                <a href="/web/patient/doctors/Dermatology" title="John Doe"><img
+                                                        src="/assets/img/dermatology-100.png" alt=""
+                                                        class="w-40 rounded-circle"></a>
+                                            </div>
+                                            <div class="contact-info">
+                                                <a href="/web/patient/doctors/Dermatology">
+                                                    <span class="contact-name text-ellipsis">Dermatology</span>
+                                                </a>
+                                                <span class="contact-date">For disorders affecting the skin, hair, and
+                                                    ...</span>
+                                            </div>
+                                        </div>
+                                    </li>
+
+
+                                    <li>
+
+                                        <div class="contact-cont">
+
+                                            <div class="float-left user-img user-img-speciality m-r-10">
+                                                <a href="/web/patient/doctors/Anesthesiology" title="John Doe"><img src="/assets/img/anesthesiology-100.png" alt=""
+                                                        class="w-40 rounded-circle"></a>
+                                            </div>
+                                            <div class="contact-info">
+                                                <a href="/web/patient/doctors/Anesthesiology">
+                                                    <span class="contact-name text-ellipsis">Anesthesiology</span>
+                                                </a>
+                                                <span class="contact-date">Provides pain relief</span>
+                                            </div>
+
+                                        </div>
+
+                                    </li>
+
+
+
+                                </ul>
+                            </div>
+                            <div class="card-footer text-center bg-white">
+                                <a href="/web/patient/doctors" class="text-muted">View all Doctors</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    <script src="/assets/js/jquery-3.2.1.min.js"></script>
+    <script src="/assets/js/popper.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/jquery.slimscroll.js"></script>
+    <script src="/assets/js/app.js"></script>
+</body>
+
+
+<!-- blog-details23:56-->
+
+</html>

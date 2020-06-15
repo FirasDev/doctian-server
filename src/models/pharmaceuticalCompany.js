@@ -33,6 +33,16 @@ const pharmaceuticalCompanySchema = new mongoose.Schema({
     }
 })
 
+pharmaceuticalCompanySchema.statics.findByUser = async (id) => {
+    const pharmaceuticalCompany = await PharmaceuticalCompany.findOne({ owner: id })
+
+    if(!pharmaceuticalCompany){
+        throw new Error('Unable to find Pharmaceutical Company')
+    }
+    
+    return pharmaceuticalCompany
+}
+
 const PharmaceuticalCompany = mongoose.model('PharmaceuticalCompany',pharmaceuticalCompanySchema)
 
 module.exports = PharmaceuticalCompany

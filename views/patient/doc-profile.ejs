@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- blog-details23:51-->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico">
+    <title>Preclinic - Medical & Hospital - Bootstrap 4 Admin Template</title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <!--[if lt IE 9]>
+		<script src="/assets/js/html5shiv.min.js"></script>
+		<script src="/assets/js/respond.min.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+    <style>
+        .about-author-img-note {
+            background-color: #fff;
+            height: 70px;
+            overflow: hidden;
+            position: absolute;
+            width: 70px;
+        }
+    </style>
+    <div class="main-wrapper">
+        <%- include('partials/header') %>
+        <%- include('partials/sidemenu') %>
+        <div class="page-wrapper">
+            <div class="content">
+                <div class="card-box profile-header">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="profile-view">
+                                <div class="profile-img-wrap">
+                                    <div class="profile-img">
+                                        <a href="#"><img class="avatar" src="/users/img/<%= doctor.owner.avatar %>" alt=""></a>
+                                    </div>
+                                </div>
+                                <div class="profile-basic">
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <div class="profile-info-left">
+                                                <h3 class="user-name m-t-0 mb-0" style="text-transform: capitalize;"><%= doctor.name %> <%= doctor.lastName %></h3>
+                                                <small class="text-muted capitalize" ><%= doctor.specialty %></small>
+                                                <div class="staff-id capitalize">Years of Experience : <%= moment().diff(moment(doctor.startWorkDate), 'years') %> until now</div>
+                                                <div class="staff-msg"><a href="/web/patient/doctors/appointment/<%= doctor._id %>" class="btn btn-primary">AI Auto-Appointment</a></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <ul class="personal-info">
+                                                <li>
+                                                    <span class="title">Phone:</span>
+                                                    <span class="text"><a href="#"><%= doctor.owner.phoneNumber %></a></span>
+                                                </li>
+                                                <li>
+                                                    <span class="title">Email:</span>
+                                                    <span class="text"><a href="#"><%= doctor.owner.email.toUpperCase() %></a></span>
+                                                </li>
+                                                <li>
+                                                    <span class="title">License Number:</span>
+                                                    <span class="text"><%= doctor.medicalLicenseNumber.toUpperCase() %></span>
+                                                </li>
+                                                <li>
+                                                    <span class="title">Country:</span>
+                                                    <span class="text"><%= doctor.owner.country.toUpperCase() %></span>
+                                                </li>
+                                                <li>
+                                                    <span class="title">Address:</span>
+                                                    <span class="text"><%= doctor.owner.address %></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-tabs">
+                    <ul class="nav nav-tabs nav-tabs-bottom">
+                        <li class="nav-item"><a class="nav-link active" href="#about-cont" data-toggle="tab">More Information</a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div class="tab-pane show active" id="about-cont">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card-box">
+                                        <h3 class="card-title">Open Timing</h3>
+                                        <div class="experience-box">
+                                            <ul class="experience-list">
+                                                <li>
+                                                    <div class="experience-user">
+                                                        <div class="before-circle"></div>
+                                                    </div>
+                                                    <div class="experience-content">
+                                                        <div class="timeline-content">
+                                                            <a href="#/" class="name"><%= doctor.workDays %></a>
+                                                            <div>Session Fee : <%= doctor.fee %> </div>
+                                                            <span class="time"><%= moment(doctor.dispoHourStart).format('LT'); %> - <%= moment(doctor.dispoHourEnd).format('LT'); %></span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/assets/js/jquery-3.2.1.min.js"></script>
+    <script src="/assets/js/popper.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/jquery.slimscroll.js"></script>
+    <script src="/assets/js/app.js"></script>
+</body>
+
+
+<!-- blog-details23:56-->
+
+</html>

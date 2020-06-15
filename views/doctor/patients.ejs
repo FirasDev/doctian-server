@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- blog-details23:51-->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico">
+    <title>Doctian - Web portal</title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <!--[if lt IE 9]>
+		<script src="/assets/js/html5shiv.min.js"></script>
+		<script src="/assets/js/respond.min.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+    <style>
+        .about-author-img-note {
+            background-color: #fff;
+            height: 70px;
+            overflow: hidden;
+            position: absolute;
+            width: 70px;
+        }
+    </style>
+    <div class="main-wrapper">
+        <%- include('partials/header') %>
+        <%- include('partials/sidemenu') %>
+        <div class="page-wrapper">
+            <div class="content">
+                <div class="col-sm-4 col-3">
+                    <h4 class="page-title">My patients</h4>
+                </div>
+                <div class="row">
+					<div class="col-12 col-md-6 col-lg-8 col-xl-8">
+						<div class="card">
+							<div class="card-block">
+								<div class="table-responsive">
+									<table class="table mb-0 new-patient-table">
+										<tbody>
+                                            <% for( let k = 0; k < patients.length; k++ ) { %>
+                                            
+											<tr>
+												<td>
+                                                    <% if(patients[k].owner.avatar.length < 15 ){ %>
+                                                        <img class="rounded-circle" src="/users/img/<%= patients[k].owner.avatar  %>" alt="" width="28" height="28"> 
+                                                      <% } else{ %>  
+                                                        <img class="rounded-circle" src="<%= patients[k].owner.avatar  %>" alt="" width="28" height="28"> 
+                                                     <% } %>
+													
+													<h2><%= patients[k].name  %> <%= patients[k].lastName  %></h2>
+												</td>
+												<td><%= patients[k].owner.email  %></td>
+												<td><%= patients[k].owner.phoneNumber  %></td>
+												<td><button class="btn btn-primary btn-primary-one float-right"><%= patients[k].gender  %></button></td>
+                                            </tr>
+                                            
+                                            <% } %>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-12 col-md-6 col-lg-4 col-xl-4">
+				</div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <script src="/assets/js/jquery-3.2.1.min.js"></script>
+    <script src="/assets/js/popper.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/jquery.slimscroll.js"></script>
+    <script src="/assets/js/app.js"></script>
+</body>
+
+
+<!-- blog-details23:56-->
+
+</html>

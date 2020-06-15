@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- register24:03-->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico">
+    <title>Preclinic - Medical & Hospital - Bootstrap 4 Admin Template</title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <!--[if lt IE 9]>
+		<script src="/assets/js/html5shiv.min.js"></script>
+		<script src="/assets/js/respond.min.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+    <style>
+        .account-box-register {
+            background-color: #fff;
+            border: 1px solid #eaeaea;
+            margin: 0 auto;
+            padding: 20px;
+            width: 800px;
+        }
+
+        .account-logo {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .account-box-register .form-group {
+            margin-bottom: 20px;
+        }
+
+        .account-box-register a {
+            color: #333;
+            font-size: 14px;
+        }
+
+        .account-box-register a:hover {
+            color: #009efb;
+        }
+
+        .account-box-register .account-btn {
+            border-radius: 50px;
+            font-size: 16px;
+            min-width: 150px;
+            padding: 8px 30px;
+            text-transform: uppercase;
+        }
+    </style>
+    <div class="main-wrapper  account-wrapper">
+        <div class="account-page">
+            <div class="account-center">
+                <div class="account-box-register">
+                    <form method="POST" action="/web/register/final" class="form-signin">
+                        <div class="card-box">
+                            <h3 class="card-title">Complete Contact Informations</h3>
+                            <input type="hidden" name="latitude" id="hiddenInputLatitude" />
+                            <input type="hidden" name="longitude" id="hiddenInputLongitude" />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group form-focus">
+                                        <label class="focus-label">Address</label>
+                                        <input type="text" name="address" class="form-control floating"
+                                            value="<%= address %>">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-focus">
+                                        <label class="focus-label">State</label>
+                                        <input type="text" name="city" class="form-control floating"
+                                            value="<%= city %>">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-focus">
+                                        <label class="focus-label">Country</label>
+                                        <input type="text" name="country" class="form-control floating"
+                                            value="<%= country %>">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-focus">
+                                        <label class="focus-label">Pin Code</label>
+                                        <input type="text" name="zipcode" class="form-control floating"
+                                            value="<%= zipcode %>">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-focus">
+                                        <label class="focus-label">Phone Number</label>
+                                        <input type="text" name="phone" class="form-control floating"
+                                            placeholder="99999999" value="123456789">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group text-center">
+                            <button class="btn btn-primary account-btn" type="submit">Complete Register</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="http://j.maxmind.com/app/geoip.js"></script> <!-- For our fallback -->
+    <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script src="/assets/js/jquery-3.2.1.min.js"></script>
+    <script src="/assets/js/popper.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/app.js"></script>
+    <script>
+        navigator.geolocation.getCurrentPosition(locationSuccess, locationFail);
+        function locationSuccess(position) {
+            latitude = position.coords.latitude;
+            longitude = position.coords.longitude;
+            var inputLatitude = document.getElementById('hiddenInputLatitude');
+            var inputLongitude = document.getElementById('hiddenInputLongitude');
+            inputLatitude.value = latitude.toString();
+            inputLongitude.value = longitude.toString();
+        }
+
+        function locationFail() {
+            alert("Oops, could not find you.");
+        }
+    </script>
+</body>
+
+
+<!-- register24:03-->
+
+</html>

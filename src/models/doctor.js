@@ -37,6 +37,7 @@ const doctorSchema = new mongoose.Schema({
     },
     updatedAt:{
         type : Date,
+        trim:true,
         default: Date.now
     },
     medicalLicenseNumber:{

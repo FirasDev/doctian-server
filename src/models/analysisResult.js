@@ -17,6 +17,6 @@ const analysisResultSchema = new mongoose.Schema({
     }
 })
 
-const Notes = mongoose.model('AnalysisResult',analysisResultSchema)
+const AnalysisResult = mongoose.model('AnalysisResult',analysisResultSchema)
 
-module.exports = Notes
+module.exports = AnalysisResult

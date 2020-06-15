@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- blog-details23:51-->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico">
+    <title>Preclinic - Medical & Hospital - Bootstrap 4 Admin Template</title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <!--[if lt IE 9]>
+		<script src="/assets/js/html5shiv.min.js"></script>
+		<script src="/assets/js/respond.min.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+    <style>
+        .about-author-img-note {
+            background-color: #fff;
+            height: 70px;
+            overflow: hidden;
+            position: absolute;
+            width: 70px;
+        }
+    </style>
+    <div class="main-wrapper">
+        <%- include('partials/header') %>
+        <%- include('partials/sidemenu') %>
+        <div class="page-wrapper">
+            <div class="content">
+                <div class="row">
+                    <div class="col-lg-8 offset-lg-2">
+                        <h4 class="page-title">Perscriptions</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8 offset-lg-2">
+                        <div class="blog-view">
+                            <% for (var perscription of perscriptions) { %>
+                            <article class="blog blog-single-post">
+                                <div class="about-author-img-note">
+                                    <div class="author-img-wrap">
+                                        <img class="img-fluid rounded-circle" alt=""
+                                            src="/users/img/<%= perscription.doctor.owner.avatar %>">
+                                    </div>
+                                </div>
+                                <div class="author-details">
+                                    <span class="blog-author-name capitalize"> <%= perscription.doctor.name %>
+                                        <%= perscription.doctor.lastName %></span>
+
+                                    <div class="blog-info clearfix">
+                                        <div class="post-left">
+                                            <ul>
+                                                <li><a href="#."><i class="fa fa-calendar"></i>
+                                                        <span><%= moment(perscription.createDate).format('MMMM DD, YYYY'); %>
+                                                        </span></a></li>
+                                                <li><a href="#."><i class="fa fa-user-o"></i> <span>Speciality :
+                                                            <%= perscription.doctor.specialty %></span></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="blog-content">
+                                    <p><%= perscription.perscriptionDescription %>.</p>
+                                </div>
+                            </article>
+                            <% } %>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/assets/js/jquery-3.2.1.min.js"></script>
+    <script src="/assets/js/popper.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/jquery.slimscroll.js"></script>
+    <script src="/assets/js/app.js"></script>
+</body>
+
+
+<!-- blog-details23:56-->
+
+</html>

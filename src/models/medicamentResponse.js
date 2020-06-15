@@ -17,6 +17,16 @@ const medicamentResponseSchema = new mongoose.Schema({
         required :true,
         ref: 'Pharmacy'
     },
+    name:{
+        type : String
+    },
+    address:{
+        type : String
+    },
+    distance:{
+        type : Number,
+        default : 10.0
+    }
 })
 
 

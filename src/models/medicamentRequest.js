@@ -4,13 +4,26 @@ const mongoose = require('mongoose')
 const medicamentRequestSchema = new mongoose.Schema({
     medicament:{
         type : String,
-        trim:true
+        
+    },
+    quantity:{
+        type : String,
     },
     state:{
         type : String,
         default:'Pending',
         enum: ['Pending', 'Closed'],
         required:true
+    },
+    image:{
+        type : String,
+    },
+    city:{
+        type : String
+    },
+    date:{
+        type : Date,
+        default: Date.now
     },
     patient:{
         type: mongoose.Schema.Types.ObjectId,
@@ -20,6 +33,12 @@ const medicamentRequestSchema = new mongoose.Schema({
     perscription:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Perscription'
+    },
+    response:{
+        type : String
+    },
+    dateB:{
+        type : Date
     }
 })
 

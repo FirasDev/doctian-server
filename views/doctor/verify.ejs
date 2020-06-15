@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- blog-details23:51-->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico">
+    <title>Preclinic - Medical & Hospital - Bootstrap 4 Admin Template</title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <!--[if lt IE 9]>
+		<script src="/assets/js/html5shiv.min.js"></script>
+		<script src="/assets/js/respond.min.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+    <style>
+        .account-box-register {
+            background-color: #fff;
+            border: 1px solid #eaeaea;
+            margin: 0 auto;
+            padding: 20px;
+            width: 800px;
+        }
+
+        .account-logo {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .account-box-register .form-group {
+            margin-bottom: 20px;
+        }
+
+        .account-box-register a {
+            color: #333;
+            font-size: 14px;
+        }
+
+        .account-box-register a:hover {
+            color: #009efb;
+        }
+
+        .account-box-register .account-btn {
+            border-radius: 50px;
+            font-size: 16px;
+            min-width: 150px;
+            padding: 8px 30px;
+            text-transform: uppercase;
+        }
+    </style>
+    <div class="main-wrapper">
+        <%- include('partials/header') %>
+        <%- include('partials/sidemenu') %>
+
+
+        <div class="page-wrapper">
+            <div class="content">
+                <div class="row">
+                    <div class="col-lg-8 offset-lg-1">
+                        <div class="account-page">
+                            <div class="account-center">
+                                <div class="account-box-register">
+                                    <form action="/doctor/verif" method="POST" onSubmit="return validate(this);"
+                                        enctype="multipart/form-data">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Certification File</label>
+                                                    <div class="profile-upload">
+                                                        <div class="upload-img">
+                                                            <img alt="" src="/assets/img/user.jpg">
+                                                        </div>
+                                                        <div class="upload-input">
+                                                            <input type="file" name="upfile" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Language <span class="text-danger">*</span></label>
+                                                    <select class="form-control" name="language">
+                                                        <option>English</option>
+                                                        <option>French</option>
+                                                        <option>Arabic</option>
+                                                        <option>Russian</option>
+                                                        <option>German</option>
+                                                        <option>Italian</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="m-t-20 text-center">
+                                            <button class="btn btn-primary submit-btn">Save</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar-overlay" data-reff=""></div>
+    <script src="/assets/js/jquery-3.2.1.min.js"></script>
+    <script src="/assets/js/popper.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/jquery.slimscroll.js"></script>
+    <script src="/assets/js/select2.min.js"></script>
+    <script src="/assets/js/moment.min.js"></script>
+    <script src="/assets/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="/assets/js/app.js"></script>
+
+</body>
+
+
+<!-- blog-details23:56-->
+
+</html>

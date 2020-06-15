@@ -2,27 +2,27 @@ const mongoose = require('mongoose')
 const validator = require('validator')
 
 const perscriptionSchema = new mongoose.Schema({
-    perscriptionDescription:{
-        type : String,
-        trim:true,
-        required :true
+    perscriptionDescription: {
+        type: String,
+        trim: true,
+        required: true
     },
     ipfsUrl: {
-        type : String,
-        trim:true
+        type: String,
+        trim: true
     },
-    patient:{
+    patient: {
         type: mongoose.Schema.Types.ObjectId,
-        required :true,
+        required: true,
         ref: 'Patient'
     },
-    doctor:{
+    doctor: {
         type: mongoose.Schema.Types.ObjectId,
-        required :true,
+        required: true,
         ref: 'Doctor'
     }
 })
 
-const Perscription = mongoose.model('Perscription',perscriptionSchema)
+const Perscription = mongoose.model('Perscription', perscriptionSchema)
 
 module.exports = Perscription

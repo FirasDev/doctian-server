@@ -1,0 +1,27 @@
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-inner slimscroll">
+        <div id="sidebar-menu" class="sidebar-menu">
+            <ul>
+                <li class="menu-title">Main</li>
+                <li>
+                    <a href="/web/doctor"><i class="fa fa-user-md"></i> <span>Home</span></a>
+                </li>
+                <li>
+                    <a href="/web/doctor/patients"><i class="fa fa-wheelchair"></i> <span>Patients</span></a>
+                </li>
+                <li>
+                    <a href="/web/doctor/appointments"><i class="fa fa-calendar"></i> <span>Appointments</span></a>
+                </li>
+                <li>
+                    <a href="/web/doctor/schedule"><i class="fa fa-calendar-check-o"></i> <span>Schedule</span></a>
+                </li>
+                <% if( user.activated == false) { %>
+                <li class="menu-title">Extra</li>
+                <li>
+                    <a href="/web/doctor/verify"><i class="fa fa-share-alt"></i> <span>Verify Account</span></a>
+                </li>
+                <% } %>
+            </ul>
+        </div>
+    </div>
+</div>
